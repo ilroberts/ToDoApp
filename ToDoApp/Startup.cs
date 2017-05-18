@@ -8,6 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
+using ToDoApp.Models; 
+using Microsoft.EntityFrameworkCore;
+
 namespace ToDoApp
 {
     public class Startup
@@ -28,7 +31,9 @@ namespace ToDoApp
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase());
             services.AddMvc();
+            services.AddScoped<ITodoRepository, TodoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
