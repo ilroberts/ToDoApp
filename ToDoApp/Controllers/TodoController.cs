@@ -7,7 +7,7 @@ using ToDoApp.Models;
 
 namespace ToDoApp.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/todo")]
     public class TodoController : Controller
     {
         private readonly ITodoRepository _todoRepository;
